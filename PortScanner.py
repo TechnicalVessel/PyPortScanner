@@ -42,3 +42,4 @@ else:
          i.join()
     
 print("Open Ports:", openlist)
+input("Press Enter to Exit(heh)...")
