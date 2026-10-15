@@ -14,7 +14,8 @@ customlist=[]
 openlist=[]
 threads=[]
 input("Port Scanner (Enter to continue)")
-host = input("Enter a host address: ")
+host = input("Enter a host address: ").lstrip("https://").rstrip("/")
+print(host)
 if int(input('''1: Scan for commonly used ports 
 2. Scan for custom ports
 '''))==2:
@@ -24,7 +25,7 @@ if int(input('''1: Scan for commonly used ports
               break
          else:
               customlist.append(x)
-    print("Scanning... (This will take a while!)")
+    print("Scanning...")
     for i in customlist:
          t=Thread(target=scan, args=(host,i,openlist))
          t.start()
@@ -32,7 +33,7 @@ if int(input('''1: Scan for commonly used ports
     for i in threads:
          i.join()
 else:
-    print("Scanning... (This will take a while!)")
+    print("Scanning...")
     for i in common:
         t=Thread(target=scan, args=(host,i,openlist))
         t.start()
